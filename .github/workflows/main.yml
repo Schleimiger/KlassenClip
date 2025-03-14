@@ -1,0 +1,24 @@
+# .github/workflows/main.yml
+name: Benutzer hinzufügen
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  add_user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Installiere Abhängigkeiten
+        run: |
+          pip install requests
+      - name: Benutzer hinzufügen
+        run: |
+          python add_user.py
